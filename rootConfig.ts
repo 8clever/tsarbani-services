@@ -1,6 +1,11 @@
-const { MQTT_URL, BOOKING_SERVICE_PORT = 3001 } = process.env;
+const { 
+  MQTT_URL,
+  MONGO_INITDB_ROOT_USERNAME,
+  MONGO_INITDB_ROOT_PASSWORD
+} = process.env;
 
 export const rootConfig = Object.freeze({
   MQTT_URL,
-  BOOKING_SERVICE_PORT
+  MONGO_INITDB_ROOT_USERNAME,
+  MONGO_INITDB_ROOT_PASSWORD
 })

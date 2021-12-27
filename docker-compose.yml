@@ -1,10 +1,17 @@
 version: "3.9"
 services:
+  mongo:
+    image: bitnami/mongodb:latest
+    env_file:
+      - .env
+    volumes:
+      - ./compose/mongo:/bitnami/mongodb
   mqtt:
     image: eclipse-mosquitto:latest
     volumes:
       - ./compose/mosquitto/data:/mosquitto/data
       - ./compose/mosquitto/config:/mosquitto/config
+
   booking:
     build: 
       context: .
@@ -15,8 +22,7 @@ services:
       - ./:/service
     depends_on:
       - mqtt
-    ports:
-      - 3001:3001
+      - mongo
   payment:
     build: 
       context: .
@@ -27,3 +33,4 @@ services:
       - ./:/service
     depends_on:
       - mqtt
+      - mongo
