@@ -5,8 +5,6 @@ services:
     volumes:
       - ./compose/mosquitto/data:/mosquitto/data
       - ./compose/mosquitto/config:/mosquitto/config
-    ports:
-      - 1883:1883
   booking:
     build: 
       context: .
