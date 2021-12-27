@@ -15,7 +15,7 @@ describe('BookingController', () => {
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(bookingController.getHello()).toBe('Hello World!');
+      expect(bookingController.getHello()).toBe('SOME_PAYMENT:333');
     });
   });
 });
