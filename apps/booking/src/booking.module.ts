@@ -1,10 +1,23 @@
 import { Module } from '@nestjs/common';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { rootConfig } from 'rootConfig';
+import { MICRO_SERVICES } from './booking.constants';
 import { BookingController } from './booking.controller';
-import { BookingService } from './booking.service';
+
 
 @Module({
-  imports: [],
+  imports: [
+    ClientsModule.register([
+      { 
+        name: MICRO_SERVICES.PAYMENT, 
+        transport: Transport.MQTT,
+        options: {
+          url: rootConfig.MQTT_URL
+        }
+      }
+    ])
+  ],
   controllers: [BookingController],
-  providers: [BookingService],
+  providers: [],
 })
 export class BookingModule {}

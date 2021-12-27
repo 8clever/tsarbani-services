@@ -1,3 +1,4 @@
 FROM node:gallium-alpine
 WORKDIR /service
+EXPOSE 3001
 CMD [ "npm", "start", "booking" ]

@@ -1,12 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
-import { PaymentService } from './payment.service';
+import { MessagePattern } from '@nestjs/microservices';
+
+export const PAYMENT_PATTERNS = {
+  GET_PAYMENT: "get_payment"
+}
 
 @Controller()
 export class PaymentController {
-  constructor(private readonly paymentService: PaymentService) {}
 
-  @Get()
-  getHello(): string {
-    return this.paymentService.getHello();
+  @MessagePattern(PAYMENT_PATTERNS.GET_PAYMENT)
+  getPayment(): string {
+    return "SOME_PAYMENT:333"
   }
 }
